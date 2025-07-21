@@ -1,36 +1,69 @@
-<script>
-export default {
-    data() {
-        return {
-            name: "Md Towhidul Islam",
-            status: "active",
-            tasks: ["task 1", "task 2", "task 3"],
-            githubLink: "https://github.com/tawhidib",
-        };
-    },
+<script setup>
+import { ref } from "vue";
 
-    methods: {
-        toggleStatus() {
-            switch (this.status) {
-                case "active":
-                    this.status = "pending";
-                    break;
+const name = "Md Towhidul Islam";
+const status = ref("active");
+const tasks = ["task 1", "task 2", "task 3"];
+const githubLink = "https://github.com/tawhidib";
 
-                case "pending":
-                    this.status = "inactive";
-                    break;
+const toggleStatus = () => {
+    switch (status.value) {
+        case "active":
+            status.value = "pending";
+            break;
 
-                case "inactive":
-                    this.status = "active";
-                    break;
+        case "pending":
+            status.value = "inactive";
+            break;
 
-                default:
-                    this.status = "active";
-                    break;
-            }
-        },
-    },
+        case "inactive":
+            status.value = "active";
+            break;
+
+        default:
+            status.value = "active";
+            break;
+    }
 };
+
+// initial version of setup api start from here [script setup is no need]
+
+// export default {
+//     setup() {
+//         const name = "Md Towhidul Islam";
+//         const status = ref("active");
+//         const tasks = ["task 1", "task 2", "task 3"];
+//         const githubLink = "https://github.com/tawhidib";
+
+//         const toggleStatus = () => {
+//             switch (status.value) {
+//                 case "active":
+//                     status.value = "pending";
+//                     break;
+
+//                 case "pending":
+//                     status.value = "inactive";
+//                     break;
+
+//                 case "inactive":
+//                     status.value = "active";
+//                     break;
+
+//                 default:
+//                     status.value = "active";
+//                     break;
+//             }
+//         };
+
+//         return {
+//             name,
+//             status,
+//             tasks,
+//             githubLink,
+//             toggleStatus,
+//         };
+//     },
+// };
 </script>
 
 <template>

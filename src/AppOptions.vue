@@ -1,4 +1,6 @@
 <script>
+// Options API of Vue.js
+
 export default {
     data() {
         return {
