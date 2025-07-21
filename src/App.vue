@@ -3,8 +3,9 @@ import { ref } from "vue";
 
 const name = "Md Towhidul Islam";
 const status = ref("active");
-const tasks = ["task 1", "task 2", "task 3"];
+const tasks = ref(["task 1", "task 2", "task 3"]);
 const githubLink = "https://github.com/tawhidib";
+const newTask = ref("");
 
 const toggleStatus = () => {
     switch (status.value) {
@@ -24,6 +25,17 @@ const toggleStatus = () => {
             status.value = "active";
             break;
     }
+};
+
+const addNewTask = () => {
+    if (newTask.value.trim() !== "") {
+        tasks.value.push(newTask.value);
+        newTask.value = "";
+    }
+};
+
+const deleteTask = (index) => {
+    tasks.value.splice(index, 1);
 };
 
 // initial version of setup api start from here [script setup is no need]
@@ -78,8 +90,21 @@ const toggleStatus = () => {
     <!-- status related data ends here  -->
 
     <!-- tasks start from here  -->
+
+    <h5>Add Task</h5>
+    <form @submit.prevent="addNewTask">
+        <label for="newTask">New Task</label>
+        <input type="text" id="newTask" v-model="newTask" />
+        <button type="submit">Add Task</button>
+    </form>
+
+    <p v-if="tasks.length === 0">No Task Left</p>
     <ul>
-        <li v-for="task in tasks" :key="task">{{ task }}</li>
+        <li v-for="(task, index) in tasks" :key="task">
+            {{ task }}
+
+            <button @click="deleteTask(index)">X</button>
+        </li>
     </ul>
     <!-- tasks start ends here  -->
 
