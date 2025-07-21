@@ -5,5 +5,5 @@ import Navbar from "./Navbar.vue";
 
 <template>
     <Navbar />
-    <HeroSection />
+    <HeroSection title="This is the title" subtitle="this is the subtitle" />
 </template>
