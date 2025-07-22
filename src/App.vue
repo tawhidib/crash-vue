@@ -9,5 +9,5 @@ import Navbar from "./components/Navbar.vue";
     <Navbar />
     <HeroSection title="This is the title" subtitle="this is the subtitle" />
     <HomeCards />
-    <JobListing />
+    <JobListing :limit="3" :showbutton="true" />
 </template>
